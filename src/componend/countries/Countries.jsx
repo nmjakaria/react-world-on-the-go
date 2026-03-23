@@ -7,7 +7,7 @@ const Countries = ({ countriesPromise }) => {
     const countries = countriesData.countries;
 
     return (
-        <div >
+        <div className='country'>
                 {
                     countries.map(country => <Country key={country.name.common} country={country}></Country>)
                 }

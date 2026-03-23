@@ -1,0 +1,143 @@
+.country {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 350px)); 
+    gap: 30px;
+    width: fit-content;
+    margin: 50px auto;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.country-card {
+    background: #f0f1f4;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.country-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.flag-container {
+    width: 100%;
+    height: 180px;
+    flex-shrink: 0;
+}
+
+.country-flag {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.country-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.common-name {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 800;
+}
+
+.official-name {
+    margin: 5px 0 15px 0;
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.label {
+    color: #888;
+    font-weight: 500;
+}
+
+.value {
+    color: #333;
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 15px 0;
+}
+
+.lang-text {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 8px;
+    text-align: justify;
+}
+
+.lang-badge {
+    background: #eef6ff;
+    color: #3b82f6;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-block;
+    width: fit-content;
+}
+
+.currency-section {
+    margin-top: auto; 
+    padding-top: 15px;
+}
+
+.currency-badge {
+    background: #f0fff4;
+    border: 1px solid #c6f6d5;
+    color: #27ae60;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.symbol {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.no-data {
+    color: #ffa5a5;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+@media (max-width: 1150px) {
+    .country { grid-template-columns: repeat(2, minmax(0, 350px)); }
+}
+
+@media (max-width: 768px) {
+    .country { 
+        grid-template-columns: repeat(1, minmax(0, 350px)); 
+        width: 100%;
+    }
+}

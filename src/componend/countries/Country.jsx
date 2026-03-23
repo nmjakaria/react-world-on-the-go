@@ -14,46 +14,48 @@ const Country = ({ country }) => {
     const currencySymbol = currency?.symbol || "";
 
     const population = country.population.population;
-    console.log(population);
 
     return (
-        <div style={{ border: '2px solid blue', padding: '20px', borderRadius: '10px', margin: '10px' }}>
-            <img src={flag} alt={alt} />
-            <h2>Name: {commonName}</h2>
-            <h4>Official Name: {officialName}</h4>
-            <h5>Capital: {capital}</h5>
-            <div>
-                {languages.length > 0 ? (
-                    <div style={{ marginTop: '10px' }}>
-                        <p>
-                            <strong>Languages: </strong>
-                            <span style={{ color: '#555' }}>{languages.join(', ')}</span>
-                        </p>
-                        <p style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#3b82f6' }}>
-                            Total Languages Found: {languages.length}
-                        </p>
-                    </div>
-                ) : (
-                    <p style={{ color: 'red', fontStyle: 'italic', marginTop: '10px' }}>
-                        No official language information available.
-                    </p>
-                )}
+        <div className="country-card">
+            <div className="flag-container">
+                <img src={flag} alt={alt} className="country-flag" />
             </div>
-            <div className="currency-section" style={{ marginTop: '10px' }}>
-                {currencyObj ? (
-                    <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                        <strong>Currency:</strong>
-                        <span>{currencyName}</span>
-                        <span style={{ fontWeight: 'bold', color: '#27ae60' }}>
-                            ({currencySymbol})
-                        </span>
-                    </div>
-                ) : (
-                    <p style={{ color: '#999', fontStyle: 'italic' }}>No Currency Info</p>
-                )}
-            </div>
-            <div>
-                <p>Population: {population}</p>
+            <div className="country-details">
+                <h2 className="common-name">{commonName}</h2>
+                <h4 className="official-name">{officialName}</h4>
+                <div className="info-row">
+                    <span className="label">Capital:</span>
+                    <span className="value">{capital}</span>
+                </div>
+                <div className="info-row">
+                    <span className="label">Population:</span>
+                    <span className="value">{population.toLocaleString()}</span>
+                </div>
+                <div className="divider"></div>
+                <div className="languages-section">
+                    {languages.length > 0 ? (
+                        <>
+                            <p className="lang-text">
+                                <strong>Languages:</strong> {languages.join(', ')}
+                            </p>
+                            <span className="lang-badge">
+                                {languages.length} Language{languages.length > 1 ? 's' : ''}
+                            </span>
+                        </>
+                    ) : (
+                        <p className="no-data">No language info available</p>
+                    )}
+                </div>
+                <div className="currency-section">
+                    {currencyObj ? (
+                        <div className="currency-badge">
+                            <strong>Currency:</strong> {currencyName}
+                            <span className="symbol">{currencySymbol}</span>
+                        </div>
+                    ) : (
+                        <p className="no-data">No Currency Info</p>
+                    )}
+                </div>
             </div>
         </div>
     );
