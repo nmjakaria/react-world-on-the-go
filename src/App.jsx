@@ -7,10 +7,10 @@ const countriesPromise = fetch('https://openapi.programming-hero.com/api/all')
   .then(res => res.json());
 
 const Skeleton = () => (
-  <div className="skeleton-wrapper">
-    <div className="skeleton-title"></div>
-    <div className="skeleton-text"></div>
-    <div className="skeleton-text"></div>
+  <div className="skeleton-container">
+    <div className="skeleton-line title">API Fetching</div>
+    <div className="skeleton-line text">Data Loading...</div>
+    <div className="skeleton-line text short">Data loaded.</div>
   </div>
 );
 
