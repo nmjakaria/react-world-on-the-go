@@ -7,7 +7,14 @@ const Country = ({ country }) => {
     const alt = country.flags.flags.alt;
     const capital = country.capital.capital;
     const languages = country?.languages?.languages ? Object.values(country.languages.languages) : [];
-    
+
+    const currencyObj = country?.currencies?.currencies;
+    const currency = currencyObj ? Object.values(currencyObj)[0] : null;
+    const currencyName = currency?.name || "N/A";
+    const currencySymbol = currency?.symbol || "";
+
+    const population = country.population.population;
+    console.log(population);
 
     return (
         <div style={{ border: '2px solid blue', padding: '20px', borderRadius: '10px', margin: '10px' }}>
@@ -31,6 +38,22 @@ const Country = ({ country }) => {
                         No official language information available.
                     </p>
                 )}
+            </div>
+            <div className="currency-section" style={{ marginTop: '10px' }}>
+                {currencyObj ? (
+                    <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                        <strong>Currency:</strong>
+                        <span>{currencyName}</span>
+                        <span style={{ fontWeight: 'bold', color: '#27ae60' }}>
+                            ({currencySymbol})
+                        </span>
+                    </div>
+                ) : (
+                    <p style={{ color: '#999', fontStyle: 'italic' }}>No Currency Info</p>
+                )}
+            </div>
+            <div>
+                <p>Population: {population}</p>
             </div>
         </div>
     );
