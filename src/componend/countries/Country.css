@@ -131,6 +131,66 @@
     font-style: italic;
 }
 
+.area-section {
+    border-top: 1px dashed #eee;
+    padding-top: 8px;
+    margin-top: 8px;
+}
+
+.area-section .value {
+    color: #e67e22;
+}
+
+.visited-container {
+    margin-top: 20px;
+}
+
+.visit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #3b82f6; 
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.visit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+    background-color: #2563eb;
+}
+
+.visit-btn:active {
+    transform: scale(0.95);
+}
+
+.visit-btn.is-visited {
+    background-color: #10b981;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+}
+
+.visit-btn.is-visited:hover {
+    background-color: #059669;
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.visited-flags img{
+    width: 150px;
+    margin-right: 10px;
+}
+
 @media (max-width: 1150px) {
     .country { grid-template-columns: repeat(2, minmax(0, 350px)); }
 }

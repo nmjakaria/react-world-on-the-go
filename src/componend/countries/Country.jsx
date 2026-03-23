@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Country = ({ country }) => {
+const Country = ({ country, handleVisitedCountries }) => {
     const commonName = country.name.common;
     const officialName = country.name.official;
     const flag = country.flags.flags.png;
@@ -14,6 +14,16 @@ const Country = ({ country }) => {
     const currencySymbol = currency?.symbol || "";
 
     const population = country.population.population;
+    const countryArea = country?.area?.area || 0;
+
+    const region = country?.region?.region || 0;
+
+    const [visited, setVisited] = useState(false);
+    const handleVisited = () => {
+        // setVisited(visited ? false : true);
+        setVisited(!visited);
+        handleVisitedCountries(country);
+    }
 
     return (
         <div className="country-card">
@@ -31,6 +41,10 @@ const Country = ({ country }) => {
                     <span className="label">Population:</span>
                     <span className="value">{population.toLocaleString()}</span>
                 </div>
+                <div className="info-row">
+                    <span className="label">Region:</span>
+                    <span className="value">{region}</span>
+                </div>
                 <div className="divider"></div>
                 <div className="languages-section">
                     {languages.length > 0 ? (
@@ -46,6 +60,12 @@ const Country = ({ country }) => {
                         <p className="no-data">No language info available</p>
                     )}
                 </div>
+                <div className="info-row area-section">
+                    <span className="label">Total Area:</span>
+                    <span className="value">
+                        {countryArea > 0 ? `${countryArea.toLocaleString()} sq km` : "N/A"}
+                    </span>
+                </div>
                 <div className="currency-section">
                     {currencyObj ? (
                         <div className="currency-badge">
@@ -55,6 +75,16 @@ const Country = ({ country }) => {
                     ) : (
                         <p className="no-data">No Currency Info</p>
                     )}
+                </div>
+                <div className="visited-container">
+                    <button
+                        onClick={handleVisited}
+                        className={`visit-btn ${visited ? 'is-visited' : ''}`}>
+                        <span className="btn-icon">
+                            {visited ? '✔' : '📌'}
+                        </span>
+                        {visited ? 'Visited' : 'Want to Visit'}
+                    </button>
                 </div>
             </div>
         </div>
